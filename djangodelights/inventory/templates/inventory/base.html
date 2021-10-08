@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="shortcut icon" href="{% static 'inventory/img/favicon.ico' %}" />
+
+</head>
+
+<body>
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo"><a class="ignore-css" href="{% url 'home' %}" style="textdecoration:none">Inventory App<a/></label>
+        <ul>
+            <li><a {% if request.path == "/inventory/" %}class="active"{% endif %} href="{% url 'home'%}">Home</a></li>
+            <li><a {% if "/report" in request.path %}class="active"{% endif %} href="{% url 'report'%}">Report</a></li>
+            <li><a {% if "/ingredient/" in request.path %}class="active"{% endif %} href="{% url 'ingredient_list'%}">Ingredients</a></li>
+            <li><a {% if "/menu_item/" in request.path %}class="active"{% endif %} href="{% url 'menu_item_list'%}">Menu items</a></li>
+            <li><a {% if "/purchase/" in request.path %}class="active"{% endif %} href="{% url 'purchase_list'%}">Purchases</a></li>
+            <li><a {% if "/recipe_requirement/" in request.path %}class="active"{% endif %} href="{% url 'recipe_requirement_add'%}">Add Recipe Requirement</a></li>
+        </ul>
+    </nav>
+
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

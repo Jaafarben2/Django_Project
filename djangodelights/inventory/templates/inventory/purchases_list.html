@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="sidenav">
+  <a href="{% url 'purchase_add' %}">Record purchase</a>
+</div>
+<br/>
+<h1>List of purchases</h1>
+<table>
+    <tr>
+        <th>Purchase</th>
+        <th>Date</th>
+
+    </tr>
+
+
+{% for purchase in object_list %}
+    <tr>
+        <td>{{ purchase.menu_item}}</td>
+        <td>{{ purchase.date}}</td>
+
+    </tr>
+
+{%  endfor %}
+</table>
+{% endblock %}

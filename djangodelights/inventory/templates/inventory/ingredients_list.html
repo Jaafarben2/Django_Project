@@ -1,0 +1,30 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="sidenav">
+  <a href="{% url 'ingredient_add' %}">Add ingredient</a>
+</div>
+<br/>
+<h1>Ingredients list</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Available quantity</th>
+        <th>Unit</th>
+        <th>Unit price</th>
+        <th>Update</th>
+    </tr>
+
+
+{% for ingredient in object_list %}
+    <tr>
+        <td>{{ ingredient.name}}</td>
+        <td>{{ ingredient.available_quantity}}</td>
+        <td>{{ ingredient.unit}}</td>
+        <td>{{ ingredient.unit_price}}</td>
+        <td><a href="update/{{ ingredient.pk}}"">update<a/></td>
+    </tr>
+
+{%  endfor %}
+</table>
+{% endblock %}

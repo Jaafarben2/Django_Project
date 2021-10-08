@@ -1,0 +1,187 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin-top: 5%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {text-align: center;}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.centered {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  color: #0082e6;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+
+
+
+
+
+
+* {
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body { font-family:Arial, Helvetica, sans-serif }
+    nav {
+        background: #0082e6;
+        height: 80px;
+        width: 100%;
+    }
+        label.logo{
+            color: white;
+            font-size: 35px;
+            line-height: 80px;
+            padding:0 100px;
+            font-weight: bold;
+        }
+        nav ul{
+            float: right;
+            margin-right:20px;
+        }
+            nav ul li{
+                display: inline-block;
+                line-height:80px;
+                margin: 0 5px;
+            }
+                nav ul li a{
+                    color: white;
+                    font-size: 17px;
+                    padding: 7px 13px;
+                    border-radius: 3px;
+                }
+                    a.active,a:hover{
+                        background-color: #1b9bff;
+                        transition: .5s;
+                    }
+    .checkbtn{
+        font-size: 30px;
+        color: white;
+        float: right;
+        line-height: 80px;
+        margin-right: 40px;
+        cursor: pointer;
+        display: none;
+    }
+        #check{
+           display: none;
+        }
+
+/*--------------------------*/
+/*----- MEDIA QUERRY -----*/
+/*--------------------------*/
+
+@media (max-width: 952px){
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    nav ul li a{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 858px){
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 80px;
+        left: -100%;
+        top: 80px;
+        transition: all .5s;
+        text-align: center;
+        background-color: #2c3e50;
+    }
+        nav ul li{
+            display: block;
+            margin: 50px 0;
+            line-height: 30px;
+        }
+            nav ul li a{
+                font-size: 20px;
+            }
+                a:hover,a.active{
+                    background: none;
+                    color: #0082e6;
+                }
+
+        #check:checked ~ ul{
+            left: 0;
+        }
+}
+
+
+
+.sidenav {
+  position: fixed;
+  z-index: 1;
+  margin-top: 7%;
+  left: 20px;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17 px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: white;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+form {
+  text-align: center;
+  margin-top: 5%;
+}
+p {
+    margin:30px;
+}
+.ignore-css
+{
+    all:unset;
+}
+.ignore-css:hover
+{
+    all:unset;
+}

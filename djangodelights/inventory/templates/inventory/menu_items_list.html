@@ -1,0 +1,34 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="sidenav">
+ <a href="{% url 'menu_item_add' %}">Add menu item</a>
+</div>
+<br/>
+<h1>Menu items list</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Recipe requirements</th>
+
+    </tr>
+
+
+{% for menu_item in object_list %}
+    <tr>
+        <td>{{ menu_item.name}}</td>
+        <td>{{ menu_item.price}}</td>
+
+
+ <td>
+    <ul class="menu-item-ingredients">
+                {% for recipe_requirement in menu_item.reciperequirement_set.all %}
+                <li>{{ recipe_requirement.quantity_required }} {{recipe_requirement.ingredient.unit }} {{ recipe_requirement.ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+   </tr>
+{%  endfor %}
+</table>
+{% endblock %}

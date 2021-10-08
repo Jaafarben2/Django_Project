@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <label for="menu_item">Choose a menu item:</label>
+    <select name="menu_item" id="menu_item" required>
+      {% for menu_item in menu_items %}
+            <option value="{{menu_item.id}}" {% if not menu_item.available %} disabled {% endif %}>{{menu_item}}</option>
+
+
+      {% endfor %}
+    </select>
+        <input type="submit" value="Submit"/>
+</form>
+
+{% endblock %}
+
+0767264725
