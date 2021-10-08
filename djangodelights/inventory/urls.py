@@ -1,5 +1,6 @@
 from django.urls import path
 from . import  views
+from django.urls import include
 
 urlpatterns = [
 
@@ -12,6 +13,6 @@ urlpatterns = [
     path('purchase/add', views.AddPurchaseView.as_view(), name="purchase_add"),
     path('recipe_requirement/add', views.AddRecipeRequirementView.as_view(), name="recipe_requirement_add"),
     path('ingredient/update/<int:pk>',views.UpdateIngredientView.as_view(), name="ingredient_update"),
-    path('report', views.ReportView.as_view(), name='report')
-
+    path('report', views.ReportView.as_view(), name='report'),
+    path("logout/", views.logout_view, name="_logout"),
 ]

@@ -28,6 +28,8 @@
             <li><a {% if "/menu_item/" in request.path %}class="active"{% endif %} href="{% url 'menu_item_list'%}">Menu items</a></li>
             <li><a {% if "/purchase/" in request.path %}class="active"{% endif %} href="{% url 'purchase_list'%}">Purchases</a></li>
             <li><a {% if "/recipe_requirement/" in request.path %}class="active"{% endif %} href="{% url 'recipe_requirement_add'%}">Add Recipe Requirement</a></li>
+            <li><a  href="{% url '_logout'%}">Log out</a></li>
+
         </ul>
     </nav>
 

@@ -1,40 +1,43 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, TemplateView
 from .models import Ingredient, MenuItem, Purchase, RecipeRequirement
 from .forms import IngredientForm, MenuItemForm, PurchaseForm, RecipeRequirementForm
 from django.db.models import Sum
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
-class IngredientListView(ListView):
+class IngredientListView(LoginRequiredMixin, ListView):
     template_name = "inventory/ingredients_list.html"
     model = Ingredient
 
 
-class MenuItemListView(ListView):
+class MenuItemListView(LoginRequiredMixin, ListView):
     template_name = "inventory/menu_items_list.html"
     model = MenuItem
 
 
-class PurchaseListView(ListView):
+class PurchaseListView(LoginRequiredMixin, ListView):
     template_name = "inventory/purchases_list.html"
     model = Purchase
 
 
-class AddIngredientView(CreateView):
+class AddIngredientView(LoginRequiredMixin, CreateView):
     model = Ingredient
     template_name = "inventory/add_ingredient.html"
     form_class = IngredientForm
 
 
-class AddMenuItemView(CreateView):
+class AddMenuItemView(LoginRequiredMixin, CreateView):
     model = MenuItem
     template_name = "inventory/add_menu_item.html"
     form_class = MenuItemForm
 
 
-class AddPurchaseView(TemplateView):
+class AddPurchaseView(LoginRequiredMixin, TemplateView):
     template_name = "inventory/add_purchase.html"
 
     def get_context_data(self, **kwargs):
@@ -55,19 +58,19 @@ class AddPurchaseView(TemplateView):
         return redirect('purchase_list')
 
 
-class AddRecipeRequirementView(CreateView):
+class AddRecipeRequirementView(LoginRequiredMixin, CreateView):
     model = RecipeRequirement
     template_name = "inventory/add_recipe_requirement.html"
     form_class = RecipeRequirementForm
 
 
-class UpdateIngredientView(UpdateView):
+class UpdateIngredientView(LoginRequiredMixin, UpdateView):
     model = Ingredient
     template_name = "inventory/update_ingredient.html"
     form_class = IngredientForm
 
 
-class ReportView(TemplateView):
+class ReportView(LoginRequiredMixin, TemplateView):
     template_name = "inventory/report.html"
 
     def get_context_data(self, **kwargs):
@@ -85,5 +88,11 @@ class ReportView(TemplateView):
         return context
 
 
+@login_required
 def home(request):
     return render(request, "inventory/home.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("home")

@@ -20,4 +20,6 @@ urlpatterns = [
     path('', RedirectView.as_view(pattern_name='home', permanent=False)),
     path('admin/', admin.site.urls),
     path('inventory/', include("inventory.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+
 ]
